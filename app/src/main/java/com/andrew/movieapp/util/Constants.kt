@@ -1,3 +1,4 @@
 package com.andrew.movieapp.util
 
-val TMDB_API_KEY = "5a71321a0dbeb6fc50a350779280f51b"
+const val BASE_URL = "https://api.themoviedb.org"
+const val BASE_URL_IMG = "https://image.tmdb.org/t/p/w500"
