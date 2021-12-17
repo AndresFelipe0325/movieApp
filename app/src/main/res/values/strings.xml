@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MovieApp</string>
+    <string name="error_loading_data">Error loading data. Please try again later…</string>
+    <string name="user">User</string>
+    <string name="user_hint">E-mail</string>
+    <string name="password">Password</string>
+    <string name="password_hint">Password</string>
+    <string name="btn_log_in">Log in</string>
+    <string name="company_logo_desc">Company logo</string>
+    <string name="tv_login">Login</string>
+</resources>
