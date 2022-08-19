@@ -12,4 +12,6 @@
     <string name="menu_label_popular">Popular</string>
     <string name="menu_label_top_rated">Top rated</string>
     <string name="menu_label_upcoming">Upcoming</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
