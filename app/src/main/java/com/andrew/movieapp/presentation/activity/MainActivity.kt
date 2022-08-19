@@ -1,4 +1,4 @@
-package com.andrew.movieapp.ui
+package com.andrew.movieapp.presentation.activity
 
 import android.os.Bundle
 import android.view.View

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical|center_horizontal"
-        tools:context=".ui.LoginActivity">
+        tools:context=".presentation.activity.LoginActivity">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline_horizontal1"
