@@ -36,20 +36,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.popularMovies()
+        title = "Popular Movies"
 
         bottom_navigation.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.ic_popular -> {
                     viewModel.popularMovies()
-                    setTitle("Popular Movies")
+                    title = "Popular Movies"
                 }
                 R.id.ic_top_rated -> {
                     viewModel.topRatedMovies()
-                    setTitle("Top Rated Movies")
+                    title = "Top Rated Movies"
                 }
                 R.id.ic_upcoming -> {
                     viewModel.upcomingMovies()
-                    setTitle("Upcoming Movies")
+                    title = "Upcoming Movies"
                 }
             }
             true
