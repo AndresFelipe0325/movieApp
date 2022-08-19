@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity() {
             swipeRefreshLayout.isRefreshing = false
         }
 
+        viewModel.popularMovies()
+
         bottom_navigation.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.ic_popular -> {
