@@ -5,6 +5,10 @@
       <map>
         <entry key="..\:/Users/af.moreno/Documents/AndroidProjects/movieApp/app/src/main/res/layout/activity_detail.xml" value="0.2046875" />
         <entry key="..\:/Users/af.moreno/Documents/AndroidProjects/movieApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/af.moreno/Documents/AndroidProjects/movieApp/app/src/main/res/layout/fragment_detail.xml" value="0.2046875" />
+        <entry key="..\:/Users/af.moreno/Documents/AndroidProjects/movieApp/app/src/main/res/layout/fragment_popular_movies.xml" value="0.2046875" />
+        <entry key="..\:/Users/af.moreno/Documents/AndroidProjects/movieApp/app/src/main/res/layout/fragment_top_rated_movies.xml" value="0.2046875" />
+        <entry key="..\:/Users/af.moreno/Documents/AndroidProjects/movieApp/app/src/main/res/layout/fragment_upcoming_movies.xml" value="0.2046875" />
         <entry key="..\:/Users/af.moreno/Documents/AndroidProjects/movieApp/app/src/main/res/layout/item_movie_main.xml" value="0.1" />
         <entry key="..\:/Users/af.moreno/Documents/AndroidProjects/movieApp/app/src/main/res/menu/nav_menu.xml" value="0.2046875" />
         <entry key="..\:/Users/andre/AndroidStudioProjects/MovieApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2203125" />
