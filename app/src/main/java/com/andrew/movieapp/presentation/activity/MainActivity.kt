@@ -2,21 +2,21 @@ package com.andrew.movieapp.presentation.activity
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.NavDestination
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import com.andrew.movieapp.R
-import com.andrew.movieapp.adapter.MovieList
 import com.andrew.movieapp.databinding.ActivityMainBinding
-import com.andrew.movieapp.viewmodel.MainViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by viewModels()
-    private val moviesAdapter = MovieList(arrayListOf())
-    private lateinit var binding: ActivityMainBinding
+    /*private val viewModel: MainViewModel by viewModels()
+    private val moviesAdapter = MovieList(arrayListOf())*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +24,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupView(){
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val navController = this.findNavController(R.id.navMainHostFragment)
 
-        movies_list.apply{
+        navController.addOnDestinationChangedListener { _, nd: NavDestination, _ ->
+            binding.bottomNavigation.visibility =
+                if (nd.id == R.id.loginFragment) {
+                    View.GONE
+                } else {
+                    View.VISIBLE
+                }
+        }
+        /*movies_list.apply{
             layoutManager = LinearLayoutManager(context)
             adapter = moviesAdapter
         }
@@ -41,25 +50,19 @@ class MainActivity : AppCompatActivity() {
         bottom_navigation.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.ic_popular -> {
-                    viewModel.popularMovies()
-                    title = "Popular Movies"
                 }
                 R.id.ic_top_rated -> {
-                    viewModel.topRatedMovies()
-                    title = "Top Rated Movies"
                 }
                 R.id.ic_upcoming -> {
-                    viewModel.upcomingMovies()
-                    title = "Upcoming Movies"
                 }
             }
             true
-        }
+        }*/
 
-        observeViewModel()
+        //observeViewModel()
     }
 
-    private fun observeViewModel(){
+    /*private fun observeViewModel(){
         viewModel.moviesList.observe(this, { movies ->
             movies?.let {
                 movies_list.visibility = View.VISIBLE
@@ -82,5 +85,5 @@ class MainActivity : AppCompatActivity() {
                 error_loading_movie.visibility = if(it) View.VISIBLE else View.GONE
             }
         })
-    }
+    }*/
 }
