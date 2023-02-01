@@ -10,11 +10,16 @@ data class MovieEntity(
     val id: Int = 0,
     val title: String?,
     val synopsis: String?,
-    val imgURL: String?
+    val imgURL: String?,
+    val category: String?
 ){
     companion object{
-        fun fromMovie(movie: Movie) = MovieEntity(title = movie.title, synopsis = movie.synopsis, imgURL = movie.imgUrl)
+        fun fromMovie(movie: Movie) = MovieEntity(
+            title = movie.title,
+            synopsis = movie.synopsis,
+            imgURL = movie.imgUrl,
+            category = movie.category)
     }
 
-    fun toMovie() = Movie(id, title, synopsis, imgURL)
+    fun toMovie() = Movie(id, title, synopsis, imgURL, category)
 }

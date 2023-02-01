@@ -2,7 +2,6 @@ package com.andrew.movieapp.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.andrew.movieapp.core.usecase.movie.GetPopularMovies
 import com.andrew.movieapp.di.DaggerApiComponent
 import com.andrew.movieapp.model.Movie
 import com.andrew.movieapp.model.MoviesResponse
