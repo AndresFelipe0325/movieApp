@@ -22,7 +22,7 @@ class ApiModule {
         val httpClient = OkHttpClient.Builder()
         httpClient.addInterceptor { chain ->
             val original: Request = chain.request()
-            val originalHttpUrl: HttpUrl = original.url()
+            val originalHttpUrl: HttpUrl = original.url
             val url = originalHttpUrl.newBuilder()
                 .addQueryParameter("api_key", BuildConfig.API_KEY)
                 .build()

@@ -9,8 +9,8 @@ import androidx.databinding.DataBindingUtil
 import com.andrew.movieapp.R
 import com.andrew.movieapp.databinding.ActivityLoginBinding
 import com.andrew.movieapp.viewmodel.LoginViewModel
-import kotlinx.android.synthetic.main.activity_login.*
 
+/** TODO: Connect the app with an Auth service or Firestore.**/
 class LoginActivity : AppCompatActivity() {
 
     private val viewModel: LoginViewModel by viewModels()
@@ -35,26 +35,26 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel(){
-        viewModel.loading.observe(this, { isLoading ->
-            isLoading?.let{
-                pb_loading.visibility = if(isLoading) View.VISIBLE else View.GONE
+        viewModel.loading.observe(this) { isLoading ->
+            isLoading?.let {
+                binding.pbLoading.visibility = if (it) View.VISIBLE else View.GONE
             }
-        })
+        }
 
-        viewModel.authError.observe(this, { authError ->
-            authError?.let{
-                tv_error.visibility = if(authError) View.VISIBLE else View.GONE
+        viewModel.authError.observe(this) { authError ->
+            authError?.let {
+                binding.tvError.visibility = if (authError) View.VISIBLE else View.GONE
             }
-        })
+        }
 
-        viewModel.authSuccess.observe(this, { authSuccess ->
-            authSuccess?.let{
-                if(authSuccess){
+        viewModel.authSuccess.observe(this) { authSuccess ->
+            authSuccess?.let {
+                if (authSuccess) {
                     val mainActivity = Intent(this@LoginActivity, MainActivity::class.java)
                     startActivity(mainActivity)
                 }
             }
 
-        })
+        }
     }
 }

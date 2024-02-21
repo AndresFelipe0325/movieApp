@@ -10,7 +10,6 @@ import com.andrew.movieapp.R
 import com.andrew.movieapp.adapter.MovieList
 import com.andrew.movieapp.databinding.ActivityMainBinding
 import com.andrew.movieapp.viewmodel.MainViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,28 +25,28 @@ class MainActivity : AppCompatActivity() {
     private fun setupView(){
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        movies_list.apply{
+        binding.moviesList.apply{
             layoutManager = LinearLayoutManager(context)
             adapter = moviesAdapter
         }
 
-        swipeRefreshLayout.setOnRefreshListener {
-            swipeRefreshLayout.isRefreshing = false
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.swipeRefreshLayout.isRefreshing = false
         }
 
-        bottom_navigation.setOnItemSelectedListener {
+        binding.bottomNavigation.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.ic_popular -> {
                     viewModel.popularMovies()
-                    setTitle("Popular Movies")
+                    title = "Popular Movies"
                 }
                 R.id.ic_top_rated -> {
                     viewModel.topRatedMovies()
-                    setTitle("Top Rated Movies")
+                    title = "Top Rated Movies"
                 }
                 R.id.ic_upcoming -> {
                     viewModel.upcomingMovies()
-                    setTitle("Upcoming Movies")
+                    title = "Upcoming Movies"
                 }
             }
             true
@@ -57,27 +56,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel(){
-        viewModel.moviesList.observe(this, { movies ->
+        viewModel.moviesList.observe(this) { movies ->
             movies?.let {
-                movies_list.visibility = View.VISIBLE
+                binding.moviesList.visibility = View.VISIBLE
                 moviesAdapter.updateMovies(it)
             }
-        })
+        }
 
-        viewModel.loadingMovie.observe(this, {
+        viewModel.loadingMovie.observe(this) {
             it?.let {
-                loading_movie.visibility = if(it) View.VISIBLE else View.GONE
-                if(it){
-                    error_loading_movie.visibility = View.GONE
-                    movies_list.visibility = View.GONE
+                binding.loadingMovie.visibility = if (it) View.VISIBLE else View.GONE
+                if (it) {
+                    binding.errorLoadingMovie.visibility = View.GONE
+                    binding.moviesList.visibility = View.GONE
                 }
             }
-        })
+        }
 
-        viewModel.loadingMovieError.observe(this, {
+        viewModel.loadingMovieError.observe(this) {
             it?.let {
-                error_loading_movie.visibility = if(it) View.VISIBLE else View.GONE
+                binding.errorLoadingMovie.visibility = if (it) View.VISIBLE else View.GONE
             }
-        })
+        }
     }
 }

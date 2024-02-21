@@ -3,13 +3,14 @@ package com.andrew.movieapp.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.andrew.movieapp.R
 import com.andrew.movieapp.model.Movie
 import com.andrew.movieapp.util.BASE_URL_IMG
 import com.andrew.movieapp.util.getProgressDrawable
 import com.andrew.movieapp.util.loadImage
-import kotlinx.android.synthetic.main.item_movie_main.view.*
 
 class MovieList(private var movies: ArrayList<Movie>): RecyclerView.Adapter<MovieList.MovieViewHolder>() {
 
@@ -22,10 +23,10 @@ class MovieList(private var movies: ArrayList<Movie>): RecyclerView.Adapter<Movi
 
     }
 
-    class MovieViewHolder(view: View): RecyclerView.ViewHolder(view){
-        private val movieLogo = view.movie_image
-        private val movieTitle = view.movie_title
-        private val movieSynopsis = view.movie_synopsis
+    class MovieViewHolder(view: View) : RecyclerView.ViewHolder(view){
+        private val movieLogo = view.findViewById<ImageView>(R.id.movie_image)
+        private val movieTitle = view.findViewById<TextView>(R.id.movie_title)
+        private val movieSynopsis = view.findViewById<TextView>(R.id.movie_synopsis)
         private val progressDrawable = getProgressDrawable(view.context)
 
         fun bind(movie: Movie){
