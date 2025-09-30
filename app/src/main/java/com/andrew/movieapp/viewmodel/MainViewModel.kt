@@ -20,7 +20,7 @@ class MainViewModel: ViewModel() {
     private val disposable = CompositeDisposable()
 
     /** Main items **/
-    val moviesList = MutableLiveData<List<Movie>>()
+    val moviesList = MutableLiveData<List<Movie>?>()
     val loadingMovieError = MutableLiveData<Boolean>()
     val loadingMovie = MutableLiveData<Boolean>()
 
