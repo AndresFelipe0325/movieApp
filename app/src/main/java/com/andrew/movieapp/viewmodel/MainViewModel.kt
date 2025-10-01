@@ -1,9 +1,9 @@
 package com.andrew.movieapp.viewmodel
 
+import com.andrew.movieapp.model.Movie
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.andrew.movieapp.di.DaggerApiComponent
-import com.andrew.movieapp.model.Movie
 import com.andrew.movieapp.model.MoviesResponse
 import com.andrew.movieapp.model.MoviesService
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,7 +20,7 @@ class MainViewModel: ViewModel() {
     private val disposable = CompositeDisposable()
 
     /** Main items **/
-    val moviesList = MutableLiveData<List<Movie>?>()
+    val moviesList = MutableLiveData<List<Movie>>()
     val loadingMovieError = MutableLiveData<Boolean>()
     val loadingMovie = MutableLiveData<Boolean>()
 
@@ -35,20 +35,20 @@ class MainViewModel: ViewModel() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<MoviesResponse>(){
-                    override fun onSuccess(value: MoviesResponse?) {
-                        moviesList.value = value?.results
+                    override fun onSuccess(t: MoviesResponse) {
+                        moviesList.value = t.results
                         loadingMovie.value = false
                         loadingMovieError.value = false
                         println("Success: list: ${moviesList.value}")
                         println("Success: size: ${moviesList.value?.size}")
                     }
 
-                    override fun onError(e: Throwable?) {
+                    override fun onError(e: Throwable) {
                         loadingMovieError.value = true
                         loadingMovie.value = false
                         println("Error: ${e.toString()} ")
-                        println("Error: ${e?.message} ")
-                        e?.printStackTrace()
+                        println("Error: ${e.message} ")
+                        e.printStackTrace()
                     }
                 })
         )
@@ -62,20 +62,20 @@ class MainViewModel: ViewModel() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<MoviesResponse>(){
-                    override fun onSuccess(value: MoviesResponse?) {
-                        moviesList.value = value?.results
+                    override fun onSuccess(t: MoviesResponse) {
+                        moviesList.value = t.results
                         loadingMovie.value = false
                         loadingMovieError.value = false
                         println("Success: list: ${moviesList.value}")
                         println("Success: size: ${moviesList.value?.size}")
                     }
 
-                    override fun onError(e: Throwable?) {
+                    override fun onError(e: Throwable) {
                         loadingMovieError.value = true
                         loadingMovie.value = false
                         println("Error: ${e.toString()} ")
-                        println("Error: ${e?.message} ")
-                        e?.printStackTrace()
+                        println("Error: ${e.message} ")
+                        e.printStackTrace()
                     }
                 })
         )
@@ -88,20 +88,20 @@ class MainViewModel: ViewModel() {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object: DisposableSingleObserver<MoviesResponse>(){
-                    override fun onSuccess(value: MoviesResponse?) {
-                        moviesList.value = value?.results
+                    override fun onSuccess(t: MoviesResponse) {
+                        moviesList.value = t.results
                         loadingMovie.value = false
                         loadingMovieError.value = false
                         println("Success: list: ${moviesList.value}")
                         println("Success: size: ${moviesList.value?.size}")
                     }
 
-                    override fun onError(e: Throwable?) {
+                    override fun onError(e: Throwable) {
                         loadingMovieError.value = true
                         loadingMovie.value = false
                         println("Error: ${e.toString()} ")
-                        println("Error: ${e?.message} ")
-                        e?.printStackTrace()
+                        println("Error: ${e.message} ")
+                        e.printStackTrace()
                     }
                 })
         )
